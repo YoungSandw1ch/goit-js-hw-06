@@ -1,29 +1,9 @@
-const categoriesListRef = document.querySelector('#categories');
-const allCategoriesFromList = categoriesListRef.children;
-console.log("~ allCategoriesFromList", allCategoriesFromList)
+const items = document.querySelectorAll('.item');
 
-/*
-*=============обычное логирование количества=============
-*/
+console.log(`Number of categories: `, items.length);
 
-// console.log(`Number of categories: `, NumberOfCategories.length);
-
-/*
-*=============мини-функция для вывода количества=========
-*/
-
-const getQuantity = values => { 
-  return `Number of categories: ${values.length}`;
-};
-console.log(getQuantity(allCategoriesFromList));
-
-/*
-*==мини-функция вывод заголовка и количества детей=======
-*/
-
-const getTitleAndChildsQuantitys = categories => {
-  return [...categories].forEach(category => {
-    category.querySelector('h2').textContent
-  })
-};
-console.log(getTitleAndChildsQuantitys(allCategoriesFromList));
+items.forEach(item => {
+  console.log(`Category: ${item.querySelector('h2').textContent}`
+  `Elements: `, item.querySelectorAll('li').length)
+  // console.log(`Elements: `, item.querySelectorAll('li').length);
+});
