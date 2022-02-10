@@ -14,6 +14,7 @@ const images = [
 ];
 
 //======================================================
+
 const galleryRef = document.querySelector('.gallery')
 
 const markup = images.map(image => 
@@ -21,6 +22,7 @@ const markup = images.map(image =>
 ).join('');
 
 galleryRef.insertAdjacentHTML('afterbegin', markup)
+
 //=====================createElement============
 
 // const markup = images.map(image => {
