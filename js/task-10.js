@@ -6,7 +6,7 @@ const refs = {
   boxes: document.querySelector('#boxes'),
 };
 
-refs.inputNumber.addEventListener('change', getInputValue);
+refs.inputNumber.addEventListener('blur', getInputValue);
 refs.createBtn.addEventListener('click', createBoxes);
 refs.destroyBtn.addEventListener('click', destroyBoxes);
 
@@ -20,8 +20,8 @@ function getInputValue() {
 
 function createBoxes() {
   let amount = getInputValue();
-
   const arrOfDivs = [];
+
   for (let i = 1, j = 30; i <= amount; i += 1, j += 10) {
     const color = getRandomHexColor();
     const box = document.createElement('div');
@@ -30,6 +30,7 @@ function createBoxes() {
     box.style.backgroundColor = color;
     arrOfDivs.push(box);
   }
+
   refs.boxes.append(...arrOfDivs);
 };
 
