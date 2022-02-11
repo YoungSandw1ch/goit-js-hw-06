@@ -5,26 +5,35 @@ const refs = {
   destroyBtn: controls.querySelector('[data-destroy]'),
   boxes: document.querySelector('#boxes'),
 };
-console.log(refs.inputNumber);
-console.log(refs.createBtn);
-console.log(refs.destroyBtn);
 
-refs.addEventListener('change', )
+refs.inputNumber.addEventListener('change', getInputValue);
 refs.createBtn.addEventListener('click', createBoxes);
 refs.destroyBtn.addEventListener('click', destroyBoxes);
 
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
 };
 
-function createBoxes(amount) {
+function getInputValue() {
+  return Number(refs.inputNumber.value);
+};
+
+
+function createBoxes() {
+  let amount = getInputValue();
+
   let htmlString = '';
   for (let i = 1, j = 30; i <= amount; i += 1, j += 10) {
-    htmlString += `<div width="${j}" height="${j}"></div>`;
+    const color = getRandomHexColor();
+    htmlString += `<div style = "width: ${j}px; height: ${j}px; background-color: ${color}"></div>`;
   }
-  refs.boxes.insertAdjacentHTML('afterbegin', htmlString);
+  refs.boxes.insertAdjacentHTML('beforeend', htmlString);
 };
 
 function destroyBoxes() {
   refs.boxes.innerHTML = '';
+  refs.inputNumber.value = '';
 };
+
+//==Добавил очистку поля ввода после удаления обьектов
+//==чтоб не приходилось постоянно удалять и по новому набирать
