@@ -1,5 +1,5 @@
 const refs = {
-  body: document.querySelector('body'),
+  body: document.body,
   colorValue: document.querySelector('.color'),
   changeColorBtn: document.querySelector('.change-color'),
 }
