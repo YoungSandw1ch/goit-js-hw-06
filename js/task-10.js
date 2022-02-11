@@ -18,16 +18,19 @@ function getInputValue() {
   return Number(refs.inputNumber.value);
 };
 
-
 function createBoxes() {
   let amount = getInputValue();
 
-  let htmlString = '';
+  const arrOfDivs = [];
   for (let i = 1, j = 30; i <= amount; i += 1, j += 10) {
     const color = getRandomHexColor();
-    htmlString += `<div style = "width: ${j}px; height: ${j}px; background-color: ${color}"></div>`;
+    const box = document.createElement('div');
+    box.style.width = `${j}px`;
+    box.style.height = `${j}px`;
+    box.style.backgroundColor = color;
+    arrOfDivs.push(box);
   }
-  refs.boxes.insertAdjacentHTML('beforeend', htmlString);
+  refs.boxes.append(...arrOfDivs);
 };
 
 function destroyBoxes() {
@@ -37,3 +40,18 @@ function destroyBoxes() {
 
 //==Добавил очистку поля ввода после удаления обьектов
 //==чтоб не приходилось постоянно удалять и по новому набирать
+
+/*
+*====вариат создания разметки через insertAdjacentHTML==================
+*/
+
+// function createBoxes() {
+//   let amount = getInputValue();
+
+//   let htmlString = '';
+//   for (let i = 1, j = 30; i <= amount; i += 1, j += 10) {
+//     const color = getRandomHexColor();
+//     htmlString += `<div style = "width: ${j}px; height: ${j}px; background-color: ${color}"></div>`;
+//   }
+//   refs.boxes.insertAdjacentHTML('beforeend', htmlString);
+// };
